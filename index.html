@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.ibb.co/rFz41St/favicon-16x16.png" type="image/x-icon">
+    <title>API</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loading">
+            <div class="loadingCircle"></div>
+            <p>CARGANDO...</p>
+        </div>
+        <div class="error">
+            <img src="assets/img/404.gif" alt="error">
+            <p>Ups... Lo siento, tenemos problemas en estos momentos</p>
+            <button class="volver">Nueva Busqueda</button>
+        </div>
+        <div class="mainSection">
+            <div class="section">
+                <label for="quantity">Pesos CLP</label>
+                <input type="number" id="quantity" placeholder="Cantidad">
+                <label for="coin">Moneda a convertir</label>
+                <select name="monedas" id="coin">
+                    <option value="euro">Euro</option>
+                    <option value="dolar">Dolar</option>
+                    <option value="uf">UF</option>
+                    <option value="bitcoin">BitCoin</option>
+                    <option value="utm">UTM</option>
+                    <option selected hidden value="monedas">Monedas</option>
+                </select>
+                <button id="boton">Convertir</button>
+            </div>
+
+            <div class="canvas">
+                <button id="back">Nueva Busqueda</button>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="assets/javascript/app.js"></script>
+
+
+
+</body>
+
+</html>

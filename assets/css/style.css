@@ -1,0 +1,288 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';
+    box-sizing: border-box;
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    transition: .5s;
+    background: #04A8F4;
+}
+
+.loading {
+    width: 100%;
+    height: 100vh;
+    background-color: #002;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    --size: 300px;
+    transition: .5s;
+    z-index: 2;
+}
+
+.loadingCircle {
+    width: var(--size);
+    height: var(--size);
+    background: linear-gradient(45deg, transparent, #FFF);
+    border-radius: 50%;
+    position: relative;
+    transform: rotateZ(0);
+    animation: loading  2s linear infinite;
+  
+}
+
+
+@keyframes loading {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.loadingCircle::before {
+    content: '';
+    width: 50%;
+    background-color: #002;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    border-top-left-radius: calc(var(--size) / 2);
+    border-bottom-left-radius: calc(var(--size) / 2);
+}
+
+.loadingCircle::after {
+    content: '';
+    position: absolute;
+    height: 101%;
+    width: 51%;
+    top: 0;
+    left: 50%;
+    background-color: #002;
+    border-top-right-radius: calc(var(--size) / 2);
+    border-bottom-right-radius: calc(var(--size) / 2);
+}
+
+.loading p {
+    position: absolute;
+    color: #FFF;
+    letter-spacing: 2px;
+    font-size: 1.5em;
+    animation: blinking 1s ease-out infinite;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.error {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+    z-index: 5;
+    background-color: #040205;
+    display: none;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error img {
+    height: 25em;
+}
+
+.error p {
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.volver, #back {
+    margin-top: 3%;
+    width: 15em;
+    height: 3em;
+    text-transform: uppercase;
+    border: 2px solid #FFF;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #FFF;
+}
+
+#back {
+    position: absolute;
+    top: -13%;
+    display: none;
+    transition: .5s;
+    height: 3.5em;
+}
+
+.mainSection {
+    height: 70vh;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    transform-style: preserve-3d ;
+}
+
+.mainSection::before {
+    content: '';
+    position: absolute;
+    width: 350%;
+    height: 150%;
+    background-image: url(https://wallpaperaccess.com/full/1267555.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+    top: -22%;
+    opacity: .4;
+}
+
+.section {
+    background-color: #FFF;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    position: absolute;
+    transition: 1s linear;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    border: 2px solid #040205;
+    z-index: 10;
+}
+
+
+.section label {
+    font-size: 1em;
+}
+
+.section label:nth-of-type(1) {
+    font-size: 1.3em;
+}
+
+
+#coin {
+    text-align: center;
+    border: 2px solid #04A8F4;
+}
+
+input {
+    text-align: center;
+    width: 50%;
+    outline: none;
+    border: none;
+    padding-bottom: 5px;
+    border-bottom: solid 2px #04A8F4;
+    font-size: .9em;
+}
+
+
+
+option {
+    background-color: #040205;
+    color: #FFF;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+#boton {
+    width: 10em;
+    height: 2.5em;
+    outline: none;
+    border: 2px solid #04A8F4;
+    background: #FFF;
+    cursor: pointer;
+}
+
+.canvas {
+   
+    position: absolute;
+    display: none;
+    z-index: 0;
+    height: 100%;
+    width: 60vw;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(90deg);
+    transform-style: preserve-3d;
+    transition: .5s;
+    padding: 10px;
+    opacity: 0;
+    margin-top: 3%;
+}
+
+@keyframes apearing {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }   
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#myChart {
+    position: relative;
+}
+
+@media (max-width: 600px){
+    .section {
+        width: 70vw;
+        height: 50vh;
+    }
+
+    .canvas {
+        width: 85vw;
+        height: 70vh;
+    }
+
+    .error p {
+        font-size: 1.1em;
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+}
+
+@media (max-width: 926px) and (orientation: landscape) {
+    
+    #back {
+        top: -15%;
+    }
+
+    .canvas {
+        margin-top: 4%;
+    }
+}
