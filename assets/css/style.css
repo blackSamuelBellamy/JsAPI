@@ -133,10 +133,11 @@
 
 #back {
     position: absolute;
-    top: -13%;
-    display: none;
+    top: -14%;
     transition: .5s;
     height: 3.5em;
+    width: 12em;
+    z-index: 20;
 }
 
 .mainSection {
@@ -168,6 +169,7 @@
     background-color: #FFF;
     height: 100%;
     width: 100%;
+    min-height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -234,7 +236,6 @@ option {
     justify-content: center;
     align-items: center;
     transform: rotateY(90deg);
-    transform-style: preserve-3d;
     transition: .5s;
     padding: 10px;
     opacity: 0;
@@ -273,6 +274,10 @@ option {
         font-size: 1.1em;
         margin-top: 5%;
         margin-bottom: 10%;
+    }
+
+    #back {
+        height: 4em;
     }
 }
 

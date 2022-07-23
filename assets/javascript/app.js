@@ -14,25 +14,26 @@ const section = document.querySelector('.section')
 const canvas = document.querySelector('.canvas')
 const back = document.getElementById('back')
 
-
 window.addEventListener('load', () => {
     quantity.value = ''
 })
 
 quantity.addEventListener('input', () => {
-    if (isNaN(quantity.value) || quantity.value < 0) {
-        quantity.value = ''
-    }
-    Math.ceil(quantity.value)
+   if(isNaN(quantity.value) || quantity.value < 0)  {
+    quantity.value = ''
+    quantity.value.replace(/ /g, "")
+    alert('Ingresar solo numeros positivos, sin espacios')
+   }
 })
 
 boton.addEventListener('click', () => {
     if (quantity.value !== '' && coin.value !== 'monedas') {
+        quantity.value.replace(/ /g, "")
         currentPriceAndDays(coin.value)
         rendering()
     } 
     else if(isNaN(quantity.value)) quantity.value = ''
-})
+})  
 
 
 volver.addEventListener('click', () => {
@@ -76,7 +77,6 @@ const rendering = async () => {
         canvas.style.display = 'flex'
         setTimeout(() => {
             section.style.display = 'none'
-            back.style.display= 'block'
         }, 2000)
     }, 1000)
     const labels = []
@@ -102,13 +102,13 @@ const rendering = async () => {
     
     let calcular 
      
-    coin.value == 'bitcoin' ?  calcular = valores[valores.length -1] * 1000:
+    coin.value == 'bitcoin' ? calcular = valores[valores.length -1] * 1000:
      calcular = valores[valores.length -1]
     const data = {
         labels: labels,
         datasets: [{
             label: `Valor ${coin.value} al día de hoy es de $${
-               (quantity.value / calcular).toLocaleString('en-US')}`,
+             ((quantity.value / calcular).toFixed(1)).toLocaleString('en-US')}`,
             backgroundColor: gradiant,
             borderColor: '#002',
             pointBackgroundColor: '#ccc',
@@ -176,6 +176,7 @@ const rendering = async () => {
 
     setTimeout(() => {
         window.ctx = new Chart(ctx, config)
+        back.style.zIndex = '10'
     }, 2000)
 
 }
